@@ -1,0 +1,82 @@
+.cases {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 2em;
+  z-index: 4;
+  position: relative;
+}
+@media (max-width: 900px) {
+  .cases {
+    margin-top: -17vh;
+  }
+}
+.header_cases {
+  text-align: right;
+  height: 160px;
+}
+.header_cases > div {
+  width: 160px;
+}
+.header_cases img {
+  width: 100%;
+}
+.next {
+  margin: 20px 0;
+}
+.next img {
+  height: 70px;
+}
+.cases_container > div {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-bottom: 5em;
+}
+
+.cases_container > div > div {
+  display: flex;
+  flex-direction: column;
+  flex-basis: 45%;
+  text-align: right;
+}
+.case_image img {
+  width: 100%;
+}
+.cases_container h2 {
+  font-size: 28px;
+  color: #c22735;
+}
+.cases_container p {
+  font-size: 22px;
+  margin: 0.5em 0;
+  text-align: justify;
+  direction: rtl;
+}
+.order {
+  order: 1;
+}
+
+@media (max-width: 1000px) {
+  .cases {
+    max-width: 700px;
+    width: 85%;
+  }
+  .order {
+    order: 0;
+  }
+  .cases_container > div {
+    flex-direction: column;
+  }
+  .cases_container a {
+    width: fit-content;
+    display: block;
+    margin: 20px auto;
+  }
+  .cases_container > div > div {
+    margin-bottom: 30px;
+  }
+  .cases_container h2 {
+    text-align: center;
+    margin-top: 30px;
+  }
+}

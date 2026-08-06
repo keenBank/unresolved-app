@@ -1,0 +1,67 @@
+nav.puzzle-nav {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+nav.puzzle-nav div {
+  padding: 30px 0;
+}
+@media (max-width: 1000px) {
+  .nav div {
+    padding: 20px 0;
+  }
+}
+nav.puzzle-nav a {
+  text-decoration: none;
+  color: white;
+  font-size: 22px;
+  margin: 0 22px;
+}
+.puzzle-nav-mobile .menu {
+  display: none;
+}
+.puzzle-nav-mobile .mobile_nav {
+  display: none;
+  justify-content: center;
+  flex-direction: column;
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(#292929, #0b0b0b);
+  z-index: 1;
+}
+.puzzle-nav-mobile .mobile_nav a {
+  text-decoration: none;
+  font-size: 3em;
+  margin-bottom: 1em;
+}
+@media (max-width: 900px) {
+  nav.puzzle-nav .nav_bar {
+    display: none;
+  }
+  nav.puzzle-nav {
+    left: auto;
+    right: 0;
+  }
+  .puzzle-nav-mobile .menu {
+    cursor: pointer;
+    position: fixed;
+    top: 13px;
+    right: 13px;
+    display: block;
+    z-index: 3;
+  }
+  .puzzle-nav-mobile .menu svg {
+    width: 33px;
+    height: 33px;
+  }
+  .puzzle-nav-mobile .mobile_nav a {
+    font-size: 8vw;
+  }
+}
+.puzzle-nav-mobile .visible {
+  display: flex;
+}

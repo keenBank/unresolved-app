@@ -1,0 +1,404 @@
+/* Scoped to .puzzle4-page: this standalone minigame ("لا أحد يعلم") has its
+   own banner/marquee markup (unlike the case puzzles), so it needs its own
+   copy of a few rules instead of sharing puzzle-app.css/header.css verbatim. */
+main.puzzle4-page,
+main.puzzle4-page * {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  color: #fdfeff;
+  text-align: center;
+  font-weight: lighter;
+  font-family: "tajawal";
+}
+main.puzzle4-page {
+  padding-top: 100px;
+  background: url("../../../assets/shared/images/puzzle-cover.png"),
+    linear-gradient(#181818, #0b0b0b);
+  background-position: top;
+  background-size: 100%;
+  background-repeat: no-repeat;
+}
+main.puzzle4-page .header {
+  background-image: url("../../../assets/shared/images/puzzle-header.png");
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  padding: 200px 0;
+  margin: 0 auto;
+}
+main.puzzle4-page .header h1 {
+  font-size: 3em;
+  padding-right: 45px;
+  padding-top: 15px;
+}
+main.puzzle4-page .header p {
+  max-width: 900px;
+  margin: 0 auto;
+  width: 90%;
+  font-size: 22px;
+}
+main.puzzle4-page .welcome h2 {
+  font-size: 45px;
+}
+main.puzzle4-page .welcome p {
+  font-size: 24px;
+}
+main.puzzle4-page .welcome p:first-of-type {
+  margin: 10px 0;
+}
+main.puzzle4-page .main_container {
+  max-width: 920px;
+  margin: 0 auto;
+  margin-top: 40px;
+  padding: 0 20px;
+}
+main.puzzle4-page .documents {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+main.puzzle4-page label {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  position: relative;
+  width: 49%;
+  text-align: right;
+  background-color: #36343a;
+  padding: 15px 20px;
+  padding-left: 5px;
+  border-radius: 13px;
+  margin: 10px 0;
+  font-size: 20px;
+}
+main.puzzle4-page .checkbox {
+  position: relative;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+main.puzzle4-page .checkmark {
+  position: absolute;
+  margin-left: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 25px;
+  width: 25px;
+  border: 2px #fdfeff solid;
+  border-radius: 5px;
+}
+main.puzzle4-page .checkmark::after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+main.puzzle4-page label .checkbox:checked ~ .checkmark:after {
+  display: block;
+}
+main.puzzle4-page label .checkmark:after {
+  right: 7px;
+  top: 2px;
+  width: 6px;
+  height: 10px;
+  border: solid #ffffff;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+main.puzzle4-page .red {
+  background-color: #c22735;
+}
+main.puzzle4-page .btns_container {
+  display: flex;
+  justify-content: space-between;
+}
+main.puzzle4-page .submit {
+  appearance: none;
+  width: 40%;
+  max-width: 300px;
+  cursor: pointer;
+  font-size: 24px;
+  outline: none;
+  border: none;
+  padding: 15px 0em;
+  border-radius: 20px;
+  background-color: #c22735;
+  margin-top: 30px;
+}
+main.puzzle4-page .btns {
+  appearance: none;
+}
+main.puzzle4-page .selection {
+  width: fit-content;
+  height: fit-content;
+  text-align: right;
+  padding-right: 40px;
+}
+main.puzzle4-page .add_name {
+  text-align: right;
+  padding: 10px;
+}
+main.puzzle4-page .add_name p {
+  color: black;
+}
+main.puzzle4-page .add_name > p:first-of-type {
+  color: rgb(194, 39, 53);
+  font-weight: 900;
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+main.puzzle4-page .sec {
+  margin: 5px 0;
+  text-align: right;
+}
+main.puzzle4-page #name {
+  width: 100%;
+  height: 40px;
+  padding: 10px;
+  border-radius: 10px;
+  margin: 15px 0;
+  background: #b3b3b3;
+  border: none;
+  color: black;
+  font-weight: 500;
+  font-size: 18px;
+  text-align: right;
+}
+main.puzzle4-page .banner_wrapper {
+  width: 100%;
+  position: absolute;
+  height: 140px;
+  overflow-x: hidden;
+  top: 90px;
+}
+main.puzzle4-page .banner {
+  display: flex;
+  position: absolute;
+  top: 15%;
+  right: -10px;
+  padding-right: 10px;
+  width: 103%;
+  background-color: #e8ab02;
+  transform: rotate(-5deg);
+  overflow: hidden;
+}
+main.puzzle4-page .banner span {
+  padding: 3px;
+  margin: 0 1px;
+  color: black;
+  font-weight: 900;
+  font-size: 22px;
+}
+main.puzzle4-page .marquee_wrapper {
+  display: flex;
+  padding: 8px 5px;
+  align-items: center;
+  white-space: nowrap;
+  animation: puzzle4-marquee linear infinite;
+}
+@keyframes puzzle4-marquee {
+  0% {
+    transform: translateX(-100vw);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+main.puzzle4-page .dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  background-color: black;
+  border-radius: 50%;
+}
+main.puzzle4-page .master {
+  font-size: 21px !important;
+}
+
+/* nav/footer chrome, same visual language as the case-puzzle pages */
+nav.puzzle4-nav {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+nav.puzzle4-nav div {
+  padding: 30px 0;
+}
+nav.puzzle4-nav a {
+  text-decoration: none;
+  color: white;
+  font-size: 22px;
+  margin: 0 22px;
+}
+.puzzle4-nav-mobile .menu {
+  display: none;
+}
+.puzzle4-nav-mobile .mobile_nav {
+  display: none;
+  justify-content: center;
+  flex-direction: column;
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(#292929, #0b0b0b);
+  z-index: 1;
+}
+.puzzle4-nav-mobile .mobile_nav a {
+  text-decoration: none;
+  font-size: 3em;
+  margin-bottom: 1em;
+}
+@media (max-width: 900px) {
+  nav.puzzle4-nav .nav_bar {
+    display: none;
+  }
+  nav.puzzle4-nav {
+    left: auto;
+    right: 0;
+  }
+  .puzzle4-nav-mobile .menu {
+    cursor: pointer;
+    position: fixed;
+    top: 13px;
+    right: 13px;
+    display: block;
+    z-index: 3;
+  }
+  .puzzle4-nav-mobile .menu svg {
+    width: 33px;
+    height: 33px;
+  }
+  .puzzle4-nav-mobile .mobile_nav a {
+    font-size: 8vw;
+  }
+}
+.puzzle4-nav-mobile .visible {
+  display: flex;
+}
+footer.puzzle4-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  direction: ltr;
+}
+footer.puzzle4-footer > div {
+  flex-basis: 30%;
+  font-size: 22px;
+  direction: rtl;
+}
+footer.puzzle4-footer .footer_list li {
+  display: flex;
+  align-items: center;
+  text-align: right;
+  margin-bottom: 10px;
+}
+footer.puzzle4-footer .footer_list span {
+  width: 8px;
+  margin-left: 10px;
+  border-top: 3px solid #c22735;
+  border-radius: 2px;
+}
+footer.puzzle4-footer .footer_list a {
+  text-decoration: none;
+}
+footer.puzzle4-footer .social_links {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+footer.puzzle4-footer .social_links a {
+  width: 25px;
+  height: 25px;
+  margin: 0 10px;
+}
+footer.puzzle4-footer .social_links img {
+  width: 25px;
+  height: 25px;
+}
+footer.puzzle4-footer .footer_image img {
+  width: 100%;
+}
+footer.puzzle4-footer .footer_p_mb,
+footer.puzzle4-footer .social_container_mb,
+footer.puzzle4-footer .public_mb {
+  display: none;
+}
+@media (max-width: 1100px) {
+  footer.puzzle4-footer .mid_col {
+    display: none;
+  }
+  footer.puzzle4-footer {
+    display: grid;
+    grid-template-areas: "text text" "social image";
+    grid-template-columns: 60% 40%;
+    padding: 2em;
+  }
+  footer.puzzle4-footer .footer_list ul {
+    display: none;
+  }
+  footer.puzzle4-footer .footer_p_mb {
+    display: block;
+    grid-area: text;
+  }
+  footer.puzzle4-footer .footer_image {
+    grid-area: image;
+  }
+  footer.puzzle4-footer .social_container_mb {
+    display: block;
+    grid-area: social;
+  }
+  footer.puzzle4-footer .public_mb {
+    display: block;
+    margin-top: 25px;
+  }
+}
+@media only screen and (max-width: 600px) {
+  main.puzzle4-page .main_container {
+    width: 85%;
+    margin: 0 auto;
+  }
+  main.puzzle4-page .header h1 {
+    font-size: 10vw;
+    padding-right: 7vw;
+  }
+  main.puzzle4-page .documents {
+    justify-content: center;
+  }
+  main.puzzle4-page label {
+    width: 100%;
+    margin: 5px 0;
+    padding: 15px;
+  }
+  main.puzzle4-page .welcome {
+    max-width: 610px;
+    width: 80%;
+    margin: 0 auto;
+    margin-top: -14vw;
+    margin-bottom: 15vw;
+  }
+  main.puzzle4-page .header {
+    padding: 35vw 0;
+    transform: translateX(25px);
+    width: 94%;
+  }
+  main.puzzle4-page .submit {
+    height: 100%;
+    padding: 15px 0;
+    width: 47%;
+    border-radius: 15px;
+    font-size: 4vw;
+  }
+  main.puzzle4-page .add_name > p:first-of-type {
+    font-size: 5vw;
+  }
+  main.puzzle4-page .master,
+  main.puzzle4-page .banner span {
+    font-size: 3.3vw !important;
+  }
+}

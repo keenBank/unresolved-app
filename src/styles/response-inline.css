@@ -1,0 +1,13 @@
+/* Formerly a variant used only on FinalShow/Puzzle3 that forced its
+   .answer/.hint panels to render inline (position: static) in the page
+   flow instead of as a centered overlay like every other puzzle's
+   modals. That was the source of several of the reported bugs on that
+   page specifically: an inline block doesn't get the fixed width/height
+   every other modal shares, isn't centered over the viewport, and can
+   overflow the page instead of scrolling internally.
+
+   All modals — including this puzzle's — now use the single shared
+   fixed-overlay implementation in response.css, so this override is no
+   longer imported anywhere (see FinalShow/Puzzle3.jsx). The file is
+   kept as an empty stub rather than deleted in case anything still
+   references the path. */

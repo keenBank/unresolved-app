@@ -1,0 +1,221 @@
+/* Scoped to .puzzle-page so this design system only applies to puzzle
+   pages and never bleeds into Home/CaseHome (all page CSS ships in one
+   bundle in a merged SPA, unlike the old one-site-per-page deployment). */
+main.puzzle-page,
+main.puzzle-page * {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  color: #fdfeff;
+  text-align: center;
+  font-weight: lighter;
+  font-family: "tajawal";
+}
+
+main.puzzle-page {
+  background: url("../assets/shared/images/puzzle-cover.png"),
+    linear-gradient(#181818, #0b0b0b);
+  background-position: top;
+  background-size: 100%;
+  background-repeat: no-repeat;
+}
+main.puzzle-page .header {
+  background-image: url("../assets/shared/images/puzzle-header.png");
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  padding: 200px 0;
+  margin: 0 auto;
+}
+main.puzzle-page .header h1 {
+  font-size: 3em;
+  padding-right: 45px;
+  padding-top: 15px;
+}
+main.puzzle-page .header p {
+  max-width: 900px;
+  margin: 0 auto;
+  width: 90%;
+  font-size: 22px;
+}
+main.puzzle-page .welcome h2 {
+  font-size: 45px;
+}
+main.puzzle-page .welcome p {
+  font-size: 24px;
+}
+main.puzzle-page .welcome p:first-of-type {
+  margin: 10px 0;
+}
+main.puzzle-page .main_container {
+  max-width: 920px;
+  margin: 0 auto;
+  margin-top: 40px;
+  padding: 0 20px;
+}
+main.puzzle-page .documents {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+main.puzzle-page label {
+  display: flex;
+  align-items: top;
+  cursor: pointer;
+  position: relative;
+  width: 49%;
+  align-items: center;
+  text-align: right;
+  background-color: #36343a;
+  padding: 15px 20px;
+  padding-left: 5px;
+  border-radius: 13px;
+  margin: 10px 0;
+  font-size: 20px;
+}
+main.puzzle-page .checkbox {
+  position: relative;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+main.puzzle-page .checkmark {
+  position: absolute;
+  margin-left: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 25px;
+  width: 25px;
+  border: 2px #fdfeff solid;
+  border-radius: 5px;
+}
+
+main.puzzle-page .checkmark::after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+main.puzzle-page label .checkbox:checked ~ .checkmark:after {
+  display: block;
+}
+
+main.puzzle-page label .checkmark:after {
+  right: 7px;
+  top: 2px;
+  width: 6px;
+  height: 10px;
+  border: solid #ffffff;
+  border-width: 0 2px 2px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+main.puzzle-page .red {
+  background-color: #c22735;
+}
+main.puzzle-page .btns_container {
+  display: flex;
+  justify-content: space-between;
+}
+main.puzzle-page .submit {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  width: 40%;
+  max-width: 300px;
+  cursor: pointer;
+  font-size: 24px;
+  outline: none;
+  border: none;
+  padding: 15px 0em;
+  border-radius: 20px;
+  background-color: #c22735;
+  margin-top: 30px;
+}
+main.puzzle-page .btns {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+main.puzzle-page .selection {
+  width: fit-content;
+  height: fit-content;
+  text-align: right;
+  padding-right: 40px;
+}
+@media only screen and (max-width: 600px) {
+  html,
+  body {
+    overflow-x: hidden;
+  }
+  main.puzzle-page .main_container {
+    width: 85%;
+    margin: 0 auto;
+  }
+  main.puzzle-page .header h1 {
+    font-size: 10vw;
+    padding-right: 7vw;
+  }
+  main.puzzle-page .documents {
+    justify-content: center;
+  }
+  main.puzzle-page label {
+    width: 100%;
+    margin: 5px 0;
+    padding: 15px;
+  }
+  main.puzzle-page .welcome {
+    max-width: 610px;
+    width: 80%;
+    margin: 0 auto;
+    margin-top: -14vw;
+    margin-bottom: 15vw;
+  }
+  main.puzzle-page .welcome h2 {
+    font-size: 6vw;
+  }
+  main.puzzle-page .welcome p {
+    font-size: 4vw;
+  }
+  main.puzzle-page .header {
+    padding: 35vw 0;
+    transform: translateX(25px);
+    width: 94%;
+  }
+  main.puzzle-page .btns_container {
+    max-width: 450px;
+    width: 100%;
+    margin: 30px auto;
+  }
+  main.puzzle-page .submit {
+    height: 100%;
+    padding: 15px 0;
+    width: 47%;
+    border-radius: 15px;
+    font-size: 4vw;
+  }
+  main.puzzle-page .checkmark {
+    height: 3vw;
+    width: 3vw;
+    min-height: 14px;
+    min-width: 14px;
+    border-width: 1.5px;
+  }
+  main.puzzle-page .selection {
+    font-size: 3.2vw;
+    padding-right: 22px;
+  }
+  main.puzzle-page label .checkmark::after {
+    right: 1vw;
+    top: 0.1vw;
+    width: 0.4vw;
+  }
+}
+@media (max-width: 420px) {
+  main.puzzle-page label .checkmark::after {
+    right: 1vw;
+  }
+}

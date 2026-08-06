@@ -1,0 +1,26 @@
+.case-home {
+  padding-top: 2em;
+}
+.case-home__puzzles {
+  display: flex;
+  justify-content: center;
+  gap: 3em;
+  margin: 2em 0 5em;
+  flex-wrap: wrap;
+}
+.case-home__puzzle {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+}
+.case-home__puzzle span {
+  margin-top: 10px;
+  font-size: 24px;
+  color: #fdfeff;
+}
+@media (max-width: 1000px) {
+  .case-home__puzzles {
+    gap: 2em;
+  }
+}

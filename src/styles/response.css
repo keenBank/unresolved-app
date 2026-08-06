@@ -1,0 +1,391 @@
+@font-face {
+  font-family: "hekaya";
+  src: url("../assets/shared/fonts/hekaya.ttf") format("truetype");
+}
+html,
+body {
+  overflow-x: hidden;
+}
+
+/* NOTE ON SPECIFICITY: puzzle-app.css has a blanket
+   "main.puzzle-page, main.puzzle-page *" reset that sets margin:0,
+   padding:0, color:#fdfeff and font-weight:lighter on every element
+   (specificity 0,1,1). Any rule below that is a single class selector
+   (specificity 0,1,0) loses that fight even though this file loads
+   after puzzle-app.css — equal-or-higher specificity wins regardless
+   of import order, and 0,1,1 beats 0,1,0. Selectors that need to beat
+   that reset are prefixed with ".top-container" to add a class and
+   outrank it; that's the only reason for the prefix throughout this
+   file.
+
+   ROOT-CAUSE FIX (this pass): the previous version of this file gave
+   every modal state (hint / wrong / correct / winner) a single hard-coded
+   size (960x1130) and left it as a plain block box. Block layout stacks
+   children top-to-bottom at their natural height, so short content
+   (a hint, a wrong-answer sticker, the "add your name" form) left a huge
+   dead gap below it inside that oversized box, while the one modal with
+   genuinely long content (the correct-answer state, with two images) had
+   no way to scroll — it could only overflow. The fix is structural, not
+   just smaller numbers: every modal is now a flex COLUMN. Its first child
+   (.res_container, the actual message/image/form content — this is
+   already the first child in every single modal state in every puzzle
+   file) grows to fill the fixed-size card and vertically centers short
+   content instead of leaving a blank strip; it's also the only element
+   that scrolls, via overflow-y:auto, when content is taller than the
+   card. Its sibling (the button row that follows it) is a normal flex
+   item that never grows, so it always sits flush against the bottom
+   edge of the card — "pinned" — instead of floating wherever the
+   previous block flow happened to leave it. Because every modal state
+   shares this same markup shape (content block, then a button-row div),
+   one set of rules covers correct/wrong/hint/winner identically, which
+   is also what makes their outer dimensions and behavior identical, as
+   required.
+
+   To make ".answer"/".hint" an actual flex container, the JS toggles in
+   every Puzzle*.jsx (document.querySelector(...).style.display = "...")
+   were changed from "block" to "flex" for these modal-state selectors
+   specifically (an0-an4, hint1-hint6). ".top-container" and ".form"
+   (the unrelated inline answer-entry box on the "final show" case) were
+   left as "block" — they were never modals and don't need to be flex. */
+
+.top-container .hint,
+.top-container .answer {
+  display: none;
+  flex-direction: column;
+  box-sizing: border-box;
+  width: 640px;
+  height: 700px;
+  max-width: 92vw;
+  max-height: 88vh;
+  overflow: hidden;
+  position: fixed;
+  padding: 30px 26px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 2em;
+  background-color: #efefef;
+  /* Full-viewport dimmed backdrop without extra markup. */
+  box-shadow: 0 0 0 9999px rgba(20, 20, 20, 0.65);
+  z-index: 1000;
+}
+
+/* Guarantee nothing inside the modal (image, rotated text, etc.) can
+   render past the card's own edges, regardless of its natural size. */
+.hint *,
+.answer * {
+  box-sizing: border-box;
+  max-width: 100%;
+}
+
+/* The content block. Always the first child of .answer/.hint in every
+   puzzle file (an0/an1/an2/an3/an4/hint1-6) — wrong-answer text, the
+   correct-answer writeup + images, hint copy, or the winner "add your
+   name" form. Grows to fill whatever space the button row underneath
+   doesn't need, centers its content vertically when short, and is the
+   only part of the card that scrolls when content is tall. */
+.top-container .res_container {
+  flex: 1 1 auto;
+  min-height: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+/* The button row. In every modal state it is the element immediately
+   after .res_container, so this single rule pins it for all of them —
+   correct, wrong, hint, and winner alike — without needing a class on
+   every single one of those divs across 13 files. It never scrolls or
+   shrinks, so it stays visible at the bottom of the card at all times. */
+.top-container .res_container + div {
+  flex: 0 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  margin-top: 20px;
+  width: 100%;
+}
+
+.top-container .hint_header {
+  color: #c22735;
+  font-weight: bold;
+  font-size: 35px;
+  margin-bottom: 20px;
+}
+.hint p {
+  color: black;
+  font-size: 24px;
+  line-height: 1.4;
+  margin-bottom: 25px;
+}
+.top-container .btns {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  cursor: pointer;
+  flex: 1 1 200px;
+  max-width: 260px;
+  padding: 13px 0;
+  border: none;
+  border-radius: 15px;
+  outline: none;
+  font-size: 22px;
+  color: #fdfeff;
+  background-color: #c22735;
+}
+.top-container .hint_btn {
+  background-color: #414141;
+}
+
+.res_container img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* wrong.png is a small sticker (270x128). Stretching it to the full card
+   width blows it up ~3.5x (blurry) and pushes all the text/buttons below
+   it out of the box. Cap it to a sane size instead, and center it — it
+   sits directly inside the (flex, full-width) .res_container now, so
+   auto margins center it horizontally regardless of case. */
+.res_container:not(.right) img {
+  max-width: 260px;
+  width: 100%;
+  margin: 0 auto 10px auto;
+}
+
+.top-container .one_right {
+  margin: 20px 0;
+  font-size: 20px;
+  color: #c22735;
+  font-weight: bold;
+}
+
+.right p {
+  color: #414141;
+}
+.right > p:nth-of-type(1) {
+  font-size: 27px;
+  font-weight: bold;
+}
+.right > p:nth-of-type(2) {
+  margin: 10px 0;
+  font-size: 18px;
+  color: #00d5aa;
+}
+.top-container .images {
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+  margin: 15px 0 25px 0;
+}
+/* Two images keep the existing side-by-side layout untouched
+   (justify-content: space-between above). When there's only one
+   evidence image, that same space-between leaves the single item
+   pinned to one side instead of centered. :has() detects the actual
+   number of children straight from the markup, so this covers it
+   properly (structurally) instead of hard-coding which puzzle happens
+   to have one image. */
+.top-container .images:has(> div:only-child) {
+  justify-content: center;
+}
+.images > div {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  flex-basis: 48%;
+}
+/* Evidence photos come in at their native size (some are large squares).
+   Keep both side-by-side thumbnails at a matching, readable height
+   instead of letting them stretch to the full column width and spill
+   past the card. */
+.images img {
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: 220px;
+  margin: 0 auto;
+}
+.top-container .social_right {
+  width: 50%;
+  margin: 10px auto 0 auto;
+  display: flex;
+  justify-content: space-around;
+}
+.social_right a {
+  width: 20%;
+}
+.top-container .images p {
+  margin: 5px 0 15px 0;
+}
+.res_container p {
+  font-size: 20px;
+  line-height: 1.4;
+}
+.top-container .last {
+  display: block;
+  margin-top: 20px;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.top-container .wrong_container {
+  transform: rotate(-2deg);
+  margin-bottom: 0.5em;
+  max-width: 92%;
+  margin-left: auto;
+  margin-right: auto;
+}
+.wrong_container p {
+  font-family: "hekaya";
+  font-size: 2em;
+  /* "hekaya" is a handwritten display font; its own natural line-height
+     is tighter than its font-size, so without an explicit value any
+     paragraph that wraps to 2 lines renders with the lines drawn on
+     top of each other. This is the fix for that overlap. */
+  line-height: 1.35;
+  margin-bottom: 0.4em;
+  color: black;
+}
+.wrong_container p:last-of-type {
+  color: #c22735;
+  transform: rotate(-1deg);
+}
+
+.wrong_container p:first-of-type {
+  color: #c22735;
+  /* Was previously "line-height: 0.8" here, which is what caused this
+     exact paragraph (almost always the longest one, so the one most
+     likely to wrap to 2 lines) to render with its lines overlapping.
+     Inherit the 1.35 set above instead. */
+}
+.top-container .watchout {
+  font-family: "hekaya";
+  font-size: 3em;
+}
+
+/* Winner / "add your name" modal. This state (.res_container.add_name)
+   previously had no styling of its own at all beyond the generic
+   ".res_container p" font-size rule, so its text inherited the global
+   reset's #fdfeff (near-white) color — invisible against this card's
+   light-gray background — and its <input> was an unstyled, tiny,
+   default-browser text box. That, not just spacing, is why the winner
+   modal read as "mostly empty": most of its content was actually there
+   but unreadable. */
+.top-container .add_name p {
+  color: #414141;
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 14px;
+}
+.top-container .add_name p.sec {
+  font-size: 18px;
+  font-weight: normal;
+  color: #6b6b6b;
+  margin-bottom: 25px;
+}
+.top-container .add_name form {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+.top-container .add_name input[type="text"] {
+  width: 80%;
+  max-width: 300px;
+  padding: 12px 18px;
+  border: 2px solid #c22735;
+  border-radius: 12px;
+  outline: none;
+  font-size: 18px;
+  color: #414141;
+  background-color: #ffffff;
+  text-align: center;
+}
+
+/* Winner modal only, two small refinements — nothing here touches the
+   shared .res_container/.btns rules that every other modal relies on.
+
+   1) The shared ".res_container { flex: 1 1 auto; justify-content:
+   center }" rule above (needed so short hint/wrong content doesn't
+   leave a dead gap in the tall card) has a side effect here: with the
+   winner modal's very short content, it grows to fill the whole card
+   and centers itself *inside that grown box*, which can leave visible
+   space between the input and the button row below it. Here the
+   content block is sized to its own content instead of growing, and
+   the modal centers that content+button-row group as a whole, so the
+   buttons sit directly under the input with just their normal 20px
+   gap, no dead space in between. */
+.top-container .answer.an3 {
+  justify-content: center;
+}
+.top-container .answer.an3 .res_container {
+  flex: 0 1 auto;
+  justify-content: flex-start;
+}
+
+/* 2) "Add Name" and "Cancel" have different label lengths. The shared
+   button-row rule grows each button from a 200px basis, which can let
+   them land at slightly different widths (and so look unevenly spaced)
+   depending on their text. Giving just this row's buttons an equal
+   (0) flex-basis makes both buttons always come out exactly the same
+   width — and therefore the same height, since padding/font are
+   already identical — with the row's existing 15px gap between them,
+   so they can never crowd or overlap. Scoped to min-width so the
+   existing small-screen behavior (buttons stacked full-width, defined
+   in the media query below) is unaffected. */
+@media (min-width: 601px) {
+  .top-container .add_name + div .btns {
+    flex: 1 1 0;
+    max-width: 220px;
+  }
+}
+
+@media (max-width: 600px) {
+  .top-container .hint,
+  .top-container .answer {
+    width: 92vw;
+    height: 82vh;
+    padding: 22px 16px;
+  }
+  .top-container .res_container + div {
+    gap: 10px;
+    margin-top: 14px;
+  }
+  .top-container .btns {
+    flex: 1 1 100%;
+    max-width: 100%;
+    margin: 0;
+    padding: 10px 0;
+    font-size: 4vw;
+  }
+  .top-container .wrong_container {
+    margin-bottom: 0.4em;
+  }
+  .wrong_container p {
+    font-size: 5vw;
+  }
+  .top-container .hint_header {
+    font-size: 6vw;
+  }
+  .res_container p {
+    font-size: 4vw;
+  }
+  .right > p:nth-of-type(1) {
+    font-size: 4.4vw;
+  }
+  .right > p:nth-of-type(2),
+  .top-container .last {
+    font-size: 4.5vw;
+  }
+  .top-container .add_name p {
+    font-size: 5vw;
+  }
+  .top-container .add_name p.sec {
+    font-size: 4vw;
+  }
+}
