@@ -12,7 +12,7 @@ import insta from "../../../assets/shared/images/social2/insta.svg";
 import messanger from "../../../assets/shared/images/social2/messanger.svg";
 
 export default function Puzzle3() {
-  // This puzzle only requires ONE correct document (صورة كعك الحفل 13),
+  // This puzzle only requires ONE correct document (صورة كعك الحفل 11),
   // unlike the other puzzles in this case which require two.
   const check = () => {
     let checkbox = document.querySelectorAll("[type=checkbox]");
@@ -90,9 +90,9 @@ export default function Puzzle3() {
     "صورة القاعة8",
     "صورة القاعة9",
     "صورة الجائزة 10",
-    "صورة الخزانه 11",
+    "صورة كعك الحفل 11",
     "صورة ساكورا 12",
-    "صورة كعك الحفل 13",
+    "صورة الخزانه 13",
     "صورة الخاتم الانسة هيابرا ياما",
     "صورة الخاتم السيد تاكويا",
     "مخطط قاعة الحفل",
