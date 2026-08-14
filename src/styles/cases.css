@@ -20,11 +20,61 @@
 .header_cases img {
   width: 100%;
 }
-.next {
+.cases_container .cta {
+  direction: rtl;
+  position: relative;
+  align-self: flex-start;
   margin: 20px 0;
+  padding: 12px 18px;
+  transition: all 0.2s ease;
+  border: none;
+  background: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
 }
-.next img {
-  height: 70px;
+.cta:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: block;
+  border-radius: 50px;
+  background: #bd1c26;
+  width: 45px;
+  height: 45px;
+  transition: all 0.3s ease;
+}
+.cta span {
+  position: relative;
+  font-family: "Tajawal", sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: #ffffff;
+}
+.cta svg {
+  position: relative;
+  top: 0;
+  margin-right: 10px;
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke: #ffffff;
+  stroke-width: 2;
+  transform: translateX(5px);
+  transition: all 0.3s ease;
+}
+.cta:hover:before {
+  width: 100%;
+  background: #bd1c26;
+}
+.cta:hover svg {
+  transform: translateX(0);
+}
+.cta:active {
+  transform: scale(0.95);
 }
 .cases_container > div {
   display: flex;
