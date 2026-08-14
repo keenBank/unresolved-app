@@ -11,7 +11,6 @@ import wedding from "../../assets/home/images/cases/wedding.jpg";
 import darkness from "../../assets/home/images/cases/darkness.jpg";
 import last from "../../assets/home/images/cases/last.png";
 import internal from "../../assets/home/images/cases/internal.png";
-import next from "../../assets/shared/images/next.png";
 
 export default function Home() {
   return (
@@ -36,8 +35,12 @@ export default function Home() {
                 حيرت المحققين منذ عشرين عام يعيش القاتل حر طليقاً لم تصل له
                 العدالة إلى الان
               </p>
-              <Link className="next" to="/case/wedding">
-                <img src={next} alt="" />
+              <Link className="cta" to="/case/wedding">
+                <span>تابع إلى القضية</span>
+                <svg width="15px" height="10px" viewBox="0 0 13 10">
+                  <path d="M12,5 L2,5"></path>
+                  <polyline points="5 1 1 5 5 9"></polyline>
+                </svg>
               </Link>
             </div>
           </div>
@@ -55,8 +58,12 @@ export default function Home() {
                 اغلاق القضية في حينها. نريد منك اعادة التحقيق مرة أخرى
                 والكشف عن المجرم
               </p>
-              <Link className="next" to="/case/death-in-the-darkness">
-                <img src={next} alt="" />
+              <Link className="cta" to="/case/death-in-the-darkness">
+                <span>تابع إلى القضية</span>
+                <svg width="15px" height="10px" viewBox="0 0 13 10">
+                  <path d="M12,5 L2,5"></path>
+                  <polyline points="5 1 1 5 5 9"></polyline>
+                </svg>
               </Link>
             </div>
           </div>
@@ -72,8 +79,12 @@ export default function Home() {
                 مختلفة في هذه القضية أراد المجرم أن يظهر للعلن لا أن يختفي
                 داخل ملفات التحقيق
               </p>
-              <Link className="next" to="/case/final-show">
-                <img src={next} alt="" />
+              <Link className="cta" to="/case/final-show">
+                <span>تابع إلى القضية</span>
+                <svg width="15px" height="10px" viewBox="0 0 13 10">
+                  <path d="M12,5 L2,5"></path>
+                  <polyline points="5 1 1 5 5 9"></polyline>
+                </svg>
               </Link>
             </div>
           </div>
@@ -92,8 +103,12 @@ export default function Home() {
                 العثور على أي دليل يوصلهم إلى المسروقات عليك حل لغز اختفاء
                 المسروقات وايجاد اللص
               </p>
-              <Link className="next" to="/case/internal-burglary">
-                <img src={next} alt="" />
+              <Link className="cta" to="/case/internal-burglary">
+                <span>تابع إلى القضية</span>
+                <svg width="15px" height="10px" viewBox="0 0 13 10">
+                  <path d="M12,5 L2,5"></path>
+                  <polyline points="5 1 1 5 5 9"></polyline>
+                </svg>
               </Link>
             </div>
           </div>
