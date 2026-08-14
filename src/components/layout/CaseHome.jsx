@@ -4,7 +4,6 @@ import Header from "./Header";
 import Footer from "./Footer";
 import bg from "../../assets/home/images/header.png";
 import cover from "../../assets/home/images/cover.png";
-import next from "../../assets/shared/images/next.png";
 import "../../styles/cases.css";
 import "./case-home.css";
 
@@ -28,17 +27,26 @@ export default function CaseHome({ slug, title, description, thumbnail }) {
           </div>
         </div>
         <div className="case-home__puzzles">
-          <Link className="next case-home__puzzle" to={`/case/${slug}/puzzle1`}>
-            <img src={next} alt="" />
-            <span>المهمة الأولى</span>
+          <Link className="cta" to={`/case/${slug}/puzzle1`}>
+            <span>تابع إلى المهمة الأولى</span>
+            <svg width="15px" height="10px" viewBox="0 0 13 10">
+              <path d="M12,5 L2,5"></path>
+              <polyline points="5 1 1 5 5 9"></polyline>
+            </svg>
           </Link>
-          <Link className="next case-home__puzzle" to={`/case/${slug}/puzzle2`}>
-            <img src={next} alt="" />
-            <span>المهمة الثانية</span>
+          <Link className="cta" to={`/case/${slug}/puzzle2`}>
+            <span>تابع إلى المهمة الثانية</span>
+            <svg width="15px" height="10px" viewBox="0 0 13 10">
+              <path d="M12,5 L2,5"></path>
+              <polyline points="5 1 1 5 5 9"></polyline>
+            </svg>
           </Link>
-          <Link className="next case-home__puzzle" to={`/case/${slug}/puzzle3`}>
-            <img src={next} alt="" />
-            <span>المهمة الثالثة</span>
+          <Link className="cta" to={`/case/${slug}/puzzle3`}>
+            <span>تابع إلى المهمة الثالثة</span>
+            <svg width="15px" height="10px" viewBox="0 0 13 10">
+              <path d="M12,5 L2,5"></path>
+              <polyline points="5 1 1 5 5 9"></polyline>
+            </svg>
           </Link>
         </div>
       </main>
