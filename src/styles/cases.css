@@ -21,7 +21,8 @@
   width: 100%;
 }
 .cases_container .cta,
-.case-home__puzzles .cta {
+.case-home__puzzles .cta,
+.case-home__welcome .cta {
   direction: rtl;
   position: relative;
   align-self: flex-start;
