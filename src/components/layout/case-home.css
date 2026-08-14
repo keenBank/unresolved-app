@@ -1,6 +1,11 @@
 .case-home {
   padding-top: 2em;
 }
+.case-home__welcome {
+  display: flex;
+  justify-content: center;
+  margin: 1em 0 0;
+}
 .case-home__puzzles {
   display: flex;
   justify-content: center;
