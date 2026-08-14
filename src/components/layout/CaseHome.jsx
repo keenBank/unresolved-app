@@ -10,7 +10,13 @@ import "./case-home.css";
 // Shared "case landing" page used by every case (Wedding, FinalShow,
 // DeathInTheDarkness): shows that case's own story + links to its 3 puzzles
 // only, per the "case page shows just its own puzzles" requirement.
-export default function CaseHome({ slug, title, description, thumbnail }) {
+export default function CaseHome({
+  slug,
+  title,
+  description,
+  thumbnail,
+  welcomeUrl,
+}) {
   return (
     <div className="App">
       <Header bgImage={bg} coverImage={cover} />
@@ -26,6 +32,22 @@ export default function CaseHome({ slug, title, description, thumbnail }) {
             </div>
           </div>
         </div>
+        {welcomeUrl && (
+          <div className="case-home__welcome">
+            <a
+              className="cta"
+              href={welcomeUrl}
+              target="_blank"
+              rel="noreferrer"
+            >
+              <span>مرحباً أيها المحقق</span>
+              <svg width="15px" height="10px" viewBox="0 0 13 10">
+                <path d="M12,5 L2,5"></path>
+                <polyline points="5 1 1 5 5 9"></polyline>
+              </svg>
+            </a>
+          </div>
+        )}
         <div className="case-home__puzzles">
           <Link className="cta" to={`/case/${slug}/puzzle1`}>
             <span>تابع إلى المهمة الأولى</span>
