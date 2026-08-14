@@ -7,6 +7,7 @@
   justify-content: center;
   background: rgba(0, 0, 0, 0.65);
 }
+
 .final-show-notice__card {
   position: relative;
   box-sizing: border-box;
@@ -21,6 +22,7 @@
   text-align: center;
   font-family: "Tajawal", sans-serif;
 }
+
 .final-show-notice__close {
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -42,20 +44,25 @@
   justify-content: center;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.35);
 }
+
 .final-show-notice__close:hover {
   background-color: #414141;
 }
+
 .final-show-notice__title {
   color: #c22735;
   font-weight: bold;
   font-size: 28px;
   margin-bottom: 15px;
 }
+
 .final-show-notice__card p {
+  color: #414141;
   font-size: 18px;
   margin-bottom: 15px;
   line-height: 1.6;
 }
+
 .final-show-notice__social {
   display: flex;
   justify-content: center;
@@ -64,10 +71,12 @@
   margin-top: 10px;
   flex-wrap: wrap;
 }
+
 .final-show-notice__social img {
   width: 34px;
   height: 34px;
 }
+
 @media (max-width: 600px) {
   .final-show-notice__card {
     width: 85vw;
