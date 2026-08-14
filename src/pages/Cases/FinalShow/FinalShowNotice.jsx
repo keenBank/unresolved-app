@@ -1,10 +1,6 @@
 import React, { useState } from "react";
 import "./final-show-notice.css";
-import youtube from "../../../assets/shared/images/social/youtube.png";
 import insta from "../../../assets/shared/images/social/insta.png";
-import twitter from "../../../assets/shared/images/social/twitter-x.svg";
-import snap from "../../../assets/shared/images/social/snap.png";
-import tictok from "../../../assets/shared/images/social/tictok.png";
 import whatsapp from "../../../assets/shared/images/social2/messanger.svg";
 
 // One-time warning shown on the Final Show case page: the phone numbers
@@ -34,39 +30,11 @@ export default function FinalShowNotice() {
         <p>إن أردتم التواصل معنا فعلياً، تابعونا عبر:</p>
         <div className="final-show-notice__social">
           <a
-            href="https://youtube.com/channel/UCppzhcAxtubamEPzfKEnHSg"
-            target="_blank"
-            rel="noreferrer"
-          >
-            <img src={youtube} alt="يوتيوب" />
-          </a>
-          <a
             href="https://instagram.com/unresolved_cass?igshid=YmMyMTA2M2Y="
             target="_blank"
             rel="noreferrer"
           >
             <img src={insta} alt="انستقرام" />
-          </a>
-          <a
-            href="https://twitter.com/unresolved_cass?s=11&t=UK-0AXfs2xWnbqe16c5y2g"
-            target="_blank"
-            rel="noreferrer"
-          >
-            <img src={twitter} alt="اكس" />
-          </a>
-          <a
-            href="https://www.snapchat.com/add/unresolved_cass?share_id=QTg2ODRBQjktMTdDOC00NTJCLTg2QUItMEI0N0Y5NUVDMDIw&locale=en_SA@calendar=gregorian"
-            target="_blank"
-            rel="noreferrer"
-          >
-            <img src={snap} alt="سناب شات" />
-          </a>
-          <a
-            href="https://vt.tiktok.com/ZSdwBjnbk/"
-            target="_blank"
-            rel="noreferrer"
-          >
-            <img src={tictok} alt="تيك توك" />
           </a>
           <a href="https://wa.me/966509330727" target="_blank" rel="noreferrer">
             <img src={whatsapp} alt="واتساب" />
