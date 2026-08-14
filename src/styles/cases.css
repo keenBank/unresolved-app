@@ -20,7 +20,8 @@
 .header_cases img {
   width: 100%;
 }
-.cases_container .cta {
+.cases_container .cta,
+.case-home__puzzles .cta {
   direction: rtl;
   position: relative;
   align-self: flex-start;
