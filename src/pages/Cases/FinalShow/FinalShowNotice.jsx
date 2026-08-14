@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./final-show-notice.css";
 import insta from "../../../assets/shared/images/social/insta.png";
-import whatsapp from "../../../assets/shared/images/social2/messanger.svg";
+import whatsapp from "../../../assets/shared/images/social2/whatsapp.svg";
 
 // One-time warning shown on the Final Show case page: the phone numbers
 // used inside this case's story/documents are fictional (part of the
