@@ -4,7 +4,7 @@ import "./footer.css";
 import mask from "../../assets/shared/images/mask.png";
 import youtube from "../../assets/shared/images/social/youtube.png";
 import insta from "../../assets/shared/images/social/insta.png";
-import twitter from "../../assets/shared/images/social/twitter.png";
+import twitter from "../../assets/shared/images/social/twitter-x.svg";
 import snap from "../../assets/shared/images/social/snap.png";
 import tictok from "../../assets/shared/images/social/tictok.png";
 
