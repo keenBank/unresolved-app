@@ -389,3 +389,43 @@ body {
     font-size: 4vw;
   }
 }
+
+/* Close ("X") button for the correct-answer (an2) success modal on the
+   puzzles that previously had no way to dismiss it once a right answer
+   was found. Positioned like the Final Show notice's close button for
+   a consistent look site-wide. */
+.top-container .modal-close {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  width: 32px;
+  height: 32px;
+  border: none;
+  border-radius: 50%;
+  background-color: #c22735;
+  color: #fdfeff;
+  font-size: 20px;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.35);
+  z-index: 10;
+}
+.top-container .modal-close:hover {
+  background-color: #414141;
+}
+
+/* Link-style ".btns" button (e.g. the Final Show mission 2 "watch the
+   clip" external link) — the shared .btns rule above only targets
+   <input>, so an <a> needs these extras to render identically. */
+.top-container a.btns {
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
