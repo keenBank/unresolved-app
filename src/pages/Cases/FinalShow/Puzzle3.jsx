@@ -72,21 +72,30 @@ export default function Puzzle3() {
           <div className="app_container">
             <div>
               <label htmlFor="street">اسم الحي</label>
-              <br />
-              <input
-                type="text"
-                id="street"
-                name="street"
-                className="text_input"
-              />
+              <div className="input-wrapper">
+                <input
+                  type="text"
+                  id="street"
+                  name="street"
+                  placeholder="اكتب هنا"
+                  className="input"
+                />
+              </div>
             </div>
             <div>
               <label htmlFor="mark">اقرب معلم</label>
-              <br />
-              <input type="text" id="mark" name="mark" className="text_input" />
+              <div className="input-wrapper">
+                <input
+                  type="text"
+                  id="mark"
+                  name="mark"
+                  placeholder="اكتب هنا"
+                  className="input"
+                />
+              </div>
             </div>
           </div>
-          <div>
+          <div className="app_btns">
             <input
               className="btns_app"
               type="button"
