@@ -237,6 +237,16 @@ function Response() {
       </div>
 
       <div className="answer an2">
+        <button
+          type="button"
+          className="modal-close"
+          aria-label="إغلاق"
+          onClick={() => {
+            document.querySelector(".an2").style.display = "none";
+          }}
+        >
+          ×
+        </button>
         <div className="res_container right">
           <p>لقد اثبت براءة ابو جميل!</p>
           <p>عمل رائع أيها المحقق</p>
