@@ -231,6 +231,16 @@ function Response() {
       </div>
 
       <div className="answer an2">
+        <button
+          type="button"
+          className="modal-close"
+          aria-label="إغلاق"
+          onClick={() => {
+            document.querySelector(".an2").style.display = "none";
+          }}
+        >
+          ×
+        </button>
         <div className="res_container right">
           <p>لقد وجدت الشريك في هذه العملية</p>
           <p>عمل رائع ايها المحقق!</p>
@@ -275,6 +285,17 @@ function Response() {
               <img src={messanger} alt=" " />
             </a>
           </div>
+        </div>
+
+        <div>
+          <a
+            className="btns"
+            href="https://news-nine-red.vercel.app/"
+            target="_blank"
+            rel="noreferrer"
+          >
+            مشاهدة المقطع
+          </a>
         </div>
       </div>
 
