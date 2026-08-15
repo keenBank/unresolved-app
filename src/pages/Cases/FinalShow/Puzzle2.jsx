@@ -230,7 +230,7 @@ function Response() {
         </div>
       </div>
 
-      <div className="answer an2">
+      <div className="answer an2 fs-success">
         <button
           type="button"
           className="modal-close"
@@ -289,7 +289,7 @@ function Response() {
 
         <div>
           <a
-            className="btns"
+            className="btns watch-btn"
             href="https://news-nine-red.vercel.app/"
             target="_blank"
             rel="noreferrer"
