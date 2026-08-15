@@ -244,6 +244,16 @@ function Response() {
       </div>
 
       <div className="answer an2">
+        <button
+          type="button"
+          className="modal-close"
+          aria-label="إغلاق"
+          onClick={() => {
+            document.querySelector(".an2").style.display = "none";
+          }}
+        >
+          ×
+        </button>
         <div className="res_container right">
           <p>عمل رائع ايها المحقق!</p>
           <p>عمل رائع، يمكنك الان فتح الملف الاضافي الثاني</p>
