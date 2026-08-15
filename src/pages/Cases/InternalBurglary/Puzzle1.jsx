@@ -236,6 +236,16 @@ function Response() {
       </div>
 
       <div className="answer an2">
+        <button
+          type="button"
+          className="modal-close"
+          aria-label="إغلاق"
+          onClick={() => {
+            document.querySelector(".an2").style.display = "none";
+          }}
+        >
+          ×
+        </button>
         <div className="res_container right">
           <p>أحسنت! لقد نجحت في إثبات براءة تاكويا!</p>
           <p>عمل رائع، يمكنك الان فتح الظرف الأول</p>
