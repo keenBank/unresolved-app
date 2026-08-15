@@ -429,3 +429,38 @@ body {
   align-items: center;
   justify-content: center;
 }
+
+/* Final Show mission 2 success modal (an2) has more content than the
+   other an2 modals — two evidence images plus an extra "watch the
+   clip" button row on top of the usual title/description/social
+   icons — so it no longer fits the shared 640x700 card and was
+   forced to scroll. Scoped to this one modal instance (via the
+   "fs-success" class added only on that div in FinalShow/Puzzle2.jsx)
+   so no other puzzle's modal size changes: taller/wider card and
+   slightly smaller evidence photos so everything is visible at once,
+   no side scrollbar. */
+.top-container .fs-success {
+  width: 700px;
+  height: 800px;
+  max-height: 92vh;
+}
+.fs-success .images img {
+  max-height: 160px;
+}
+.fs-success .last {
+  margin-top: 8px;
+}
+@media (max-width: 600px) {
+  .top-container .fs-success {
+    height: 90vh;
+  }
+}
+
+/* Smaller "watch the clip" button specifically — narrower and less
+   tall than the standard .btns sizing used for "Next"/"Retry"/"Hint". */
+.top-container .watch-btn {
+  flex: 0 1 170px;
+  max-width: 170px;
+  padding: 9px 0;
+  font-size: 16px;
+}
