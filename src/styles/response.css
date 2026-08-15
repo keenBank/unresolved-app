@@ -526,3 +526,57 @@ body {
     height: 92vh;
   }
 }
+
+/* Follow-up 2: the shrink above no longer overflows/scrolls (good),
+   but it left the opposite problem — content much smaller than the
+   720x860 card, so the growing .res_container (flex: 1 1 auto) leaves
+   a large empty gap between the content and the "watch the clip"
+   button pinned at the card's bottom edge. The card's size stays the
+   same (that part was fine); the content sizing is brought back up
+   here to actually fill it, and — since these larger sizes still fit
+   the card without overflowing — centering the content vertically is
+   safe again (the earlier clipping bug only happens when content
+   overflows a scrolling container, which this no longer does). The
+   social icons are also given an explicit, much smaller fixed size:
+   unstyled, they render at their native SVG size, which is why they
+   looked oversized relative to the rest of the card. */
+.fs-success > .res_container {
+  justify-content: center;
+}
+.fs-success .right > p:nth-of-type(1) {
+  font-size: 24px;
+  margin-bottom: 6px;
+}
+.fs-success .right > p:nth-of-type(2) {
+  font-size: 16px;
+  margin: 0 0 10px;
+}
+.fs-success .images {
+  margin: 10px 0 20px 0;
+  gap: 15px;
+}
+.fs-success .images p {
+  margin: 0 0 10px 0;
+  font-size: 16px;
+}
+.fs-success .images img {
+  max-height: 170px;
+}
+.fs-success .res_container p {
+  font-size: 17px;
+  line-height: 1.45;
+}
+.fs-success .last {
+  font-size: 16px;
+  margin-top: 14px;
+}
+.fs-success .social_right {
+  width: 220px;
+  margin: 16px auto 0 auto;
+  display: flex;
+  justify-content: space-between;
+}
+.fs-success .social_right img {
+  width: 34px;
+  height: 34px;
+}
