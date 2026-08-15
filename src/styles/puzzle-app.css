@@ -219,3 +219,92 @@ main.puzzle-page .selection {
     right: 1vw;
   }
 }
+
+/* Final Show mission 3 free-text answer form ("اسم الحي" / "اقرب معلم").
+   Unlike every other puzzle (checkbox document picker), this one is a
+   plain two-field text form, so it needs its own input/button look
+   instead of the checkbox-row styling above. Input design adapted from
+   Uiverse.io (by adamgiebl), sized to fit this page's layout. Every
+   class here (app_container, input-wrapper, btns_app, app_btns) is
+   unique to this one file across the whole site, so scoping this to
+   main.puzzle-page is enough to guarantee it never touches any other
+   page or puzzle. */
+main.puzzle-page .app_container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+  max-width: 700px;
+  margin: 30px auto 0;
+}
+main.puzzle-page .app_container > div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+/* Undo the checkbox-row look (dark box, 49% width) from ".label" above
+   — here the label is just a plain caption sitting above the input. */
+main.puzzle-page .app_container label {
+  background: none;
+  width: auto;
+  padding: 0;
+  margin: 0;
+  font-size: 20px;
+}
+main.puzzle-page .input-wrapper input {
+  background-color: #eee;
+  border: none;
+  padding: 1rem;
+  font-size: 1rem;
+  width: 13em;
+  max-width: 70vw;
+  border-radius: 1rem;
+  color: lightcoral;
+  box-shadow: 0 0.4rem #dfd9d9;
+  cursor: text;
+  text-align: center;
+}
+main.puzzle-page .input-wrapper input:focus {
+  outline: 2px solid lightcoral;
+  outline-offset: 2px;
+}
+main.puzzle-page .app_btns {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-top: 30px;
+}
+main.puzzle-page .btns_app {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  cursor: pointer;
+  min-width: 160px;
+  max-width: 220px;
+  padding: 13px 0;
+  border: none;
+  border-radius: 15px;
+  outline: none;
+  font-size: 20px;
+  color: #fdfeff;
+  background-color: #c22735;
+}
+main.puzzle-page .btns_app.hint_btn {
+  background-color: #414141;
+}
+@media (max-width: 600px) {
+  main.puzzle-page .app_container {
+    gap: 20px;
+  }
+  main.puzzle-page .input-wrapper input {
+    width: 60vw;
+    font-size: 4vw;
+    padding: 0.8rem;
+  }
+  main.puzzle-page .btns_app {
+    min-width: 140px;
+    font-size: 4.2vw;
+  }
+}
