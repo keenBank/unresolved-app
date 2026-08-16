@@ -580,3 +580,14 @@ body {
   width: 34px;
   height: 34px;
 }
+
+/* Follow-up 3: with content re-sized to fill the card (previous
+   pass), the 720x860 card itself turned out taller than that content
+   actually needs, leaving a visible empty band above the "watch the
+   clip" button again. Shrinking the card itself here (rather than the
+   content) to closely match the content's real height removes that
+   gap without going back to tiny, sparse-looking text. */
+.top-container .fs-success {
+  width: 680px;
+  height: 640px;
+}
